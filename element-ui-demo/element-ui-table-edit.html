@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../element-ui2.13.2/element-ui/lib/theme-chalk/index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <template>
+            <el-table :data="tableData" border style="width: 60%;margin:0 auto" @row-dblclick="dbclick">
+                <el-table-column prop="date" label="日期" width="180"></el-table-column>
+                <el-table-column prop="name" label="姓名" width="180">
+                    <template slot-scope="scope">
+                        <el-form :model="scope.row">
+                            <el-form-item size="medium" label-width="0px">
+                                <el-input v-if="scope.row.isOK" v-model="scope.row.name" style="width:100%;hight:100%">
+                                </el-input>
+                                <span v-else>{{scope.row.name}}</span>
+                            </el-form-item>
+                        </el-form>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="address" label="地址">
+                    <template slot-scope="scope">
+                        <el-form :model="scope.row">
+                            <el-form-item size="medium" label-width="0px">
+                                <el-input v-if="scope.row.isOK" v-model="scope.row.address"
+                                    style="width:100%;hight:100%"></el-input>
+                                <span v-else>{{scope.row.address}}</span>
+                            </el-form-item>
+                        </el-form>
+                    </template>
+                </el-table-column>
+            </el-table>
+        </template>
+    </div>
+</body>
+<script src="../vue2.6.11/vue/dist/vue.min.js"></script>
+<!-- import JavaScript -->
+<script src="../element-ui2.13.2/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            tableData: [{
+                date: "2016-05-02",
+                name: "张三",
+                age: 18,
+                isOK: true,
+                address:"中国",
+            }, {
+                date: "2016-05-02",
+                name: "张三",
+                age: 18,
+                isOK:true,
+                address:"上海"
+            }, {
+                date: "2016-05-02",
+                name: "张三",
+                age: 18,
+                isOK: false,
+                address:"普陀区"
+            }]
+        },
+        methods: {
+            dbclick:function(row, event, column) {
+                row.isOK = !row.isOK
+            }
+        }
+    })
+</script>
+
+</html>

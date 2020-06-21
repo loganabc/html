@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../element-ui2.13.2/element-ui/lib/theme-chalk/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <template>
+            <el-radio label="1" v-model="radio">备选项</el-radio>
+            <el-radio label="2" v-model="radio">备选项</el-radio>
+        </template>
+        <br/>
+        <template>
+            <el-radio label="禁用" v-model="radio1" disabled="true">禁用</el-radio>
+            <el-radio label="选中且禁用" v-model="radio1" disabled="true">选中且禁用</el-radio>
+        </template>
+        <br/>
+        <template>
+            <el-radio-group v-model="radio2">
+              <el-radio :label="3">备选项</el-radio>
+              <el-radio :label="6">备选项</el-radio>
+              <el-radio :label="9">备选项</el-radio>
+            </el-radio-group>
+        </template>
+    </div>
+    
+</body>
+<script src="../vue2.6.11/vue/dist/vue.min.js"></script>
+  <!-- import JavaScript -->
+  <script src="../element-ui2.13.2/element-ui/lib/index.js"></script>
+  <script>
+      new Vue({
+          el: "#app",
+          data:function(){
+              return {radio:"1",
+            radio1:"选中且禁用",
+        radio2:6}
+          }
+      })
+  </script>
+</html>
